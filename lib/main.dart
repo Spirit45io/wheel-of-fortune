@@ -54,6 +54,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   StreamController<int> controller = StreamController<int>();
+  bool _isRolling = false;
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +74,22 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 60, 0, 60),
+                padding: const EdgeInsets.fromLTRB(0, 60, 0, 100),
                 child: Image.asset('images/smashing-feathers-logo.png'),
               ),
               FortuneBar(
                   styleStrategy: const AlternatingStyleStrategy(),
                   height: 100,
+                  onAnimationStart: () {
+                    setState(() {
+                      _isRolling = true;
+                    });
+                  },
+                  onAnimationEnd: () {
+                    setState(() {
+                      _isRolling = false;
+                    });
+                  },
                   selected: controller.stream,
                   animateFirst: false,
                   items: [
@@ -95,11 +106,13 @@ class _HomePageState extends State<HomePage> {
                         minimumSize: const Size.fromHeight(60),
                         backgroundColor:
                             const Color.fromARGB(255, 12, 106, 70)),
-                    onPressed: () {
-                      controller.add(Random().nextInt(items.length));
-                    },
+                    onPressed: _isRolling
+                        ? null
+                        : () {
+                            controller.add(Random().nextInt(items.length));
+                          },
                     child: Text(
-                      'Roll',
+                      _isRolling ? 'Rolling' : 'Roll',
                       style: GoogleFonts.lilitaOne(
                           fontSize: 20,
                           color: const Color.fromARGB(255, 255, 255, 255)),
