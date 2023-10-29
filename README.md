@@ -1,6 +1,6 @@
-# gatcha
+# Gatcha For Smashing Feathers Events
 
-A new Flutter project.
+For Gatcha stuff in an event, this is not using dynamic database so you have to set the data on `/lib/data/items.dart`.
 
 ## Getting Started
 
