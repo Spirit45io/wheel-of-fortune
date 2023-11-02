@@ -1,7 +1,6 @@
 final items = <String>[
-  'Keychain',
-
-  'T-Shirt',
-  'Book',
-  'Sticker',
+  'T-Shirt', 
+  'Book', 'Book', 'Book',
+  'Sticker', 'Sticker', 'Sticker', 'Sticker', 'Sticker', 'Sticker', 'Sticker', 'Sticker', 'Sticker', 'Sticker', 'Sticker', 'Sticker',
+  'Keychain', 'Keychain', 'Keychain', 'Keychain', 'Keychain', 'Keychain',
 ];
